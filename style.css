@@ -1,0 +1,201 @@
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+        background-image:url("https://wallpapers.com/images/file/high-resolution-blue-background-1920-x-1200-yhe7av86k4eq10j1.jpg");
+        
+     
+      
+
+    }
+    .container{
+        width: 100%;
+        text-align: center;
+        
+    }
+    h1{
+        font-weight: normal;
+        font-size: 45px;
+        position: relative;
+        margin: 40px 0;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: white;
+        
+    }
+    h1::before{
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 3px;
+        background-color: rgb(2, 26, 81);
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: animate 4s linear infinite;
+    }
+    @keyframes animate {
+        0%{
+            width: 100px;
+        }
+        50%{
+            width: 200px;
+        }
+        100%{
+            width: 100px;
+        }
+        
+    }
+    .top-content{
+        
+        
+        
+        width: 90%;
+        margin: 0 auto 20px auto;
+        height: 60px;
+        display: flex;
+        align-items: center;
+         
+        justify-content: space-between;
+        
+
+    }
+    h3{
+        height: 100%;
+        line-height: 60px;
+        padding: 0 20px;
+        color: rgb(255, 254, 254);
+
+    }
+    label{
+        display: inline-block;
+        height: 100%;
+        margin: 0 12px;
+        line-height: 60px;
+        font-size: 18px;
+        color: #f8f9f9;
+        cursor: pointer;
+        transition: color .5s;
+        
+        
+       
+        
+
+    }
+    label:hover{
+        opacity: 50%;
+        
+        
+    }
+    .Photo-gallery{
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4 ,1fr);
+        grid-gap: 20px;
+    }
+    .pic{
+        position: relative;
+        overflow: hidden;
+    }
+    .pic img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+        cursor: pointer;
+        
+
+    }
+    .pic img:hover{
+        opacity: 50%;
+    }
+    /* All Photos (sab dikhaye) */
+    #check1:checked ~ .container .Photo-gallery .pic {
+        opacity: 1;
+        transform: scale(1);
+        position: relative;
+        transition: .1s;
+    }
+
+    /* Sirf Family Photos */
+    #check2:checked ~ .container .Photo-gallery .family {
+        opacity: 1;
+        transform: scale(1);
+        position: relative;
+        transition: .1s;
+    }
+    #check2:checked ~ .container .Photo-gallery .child,
+    #check2:checked ~ .container .Photo-gallery .place {
+        opacity: 0;
+        transform: scale(0);
+        position: absolute;
+        transition: .0s;
+    }
+
+    /* Sirf Childs Photos */
+    #check3:checked ~ .container .Photo-gallery .child {
+        opacity: 1;
+        transform: scale(1);
+        position: relative;
+        transition: .1s;
+    }
+    #check3:checked ~ .container .Photo-gallery .family,
+    #check3:checked ~ .container .Photo-gallery .place {
+        opacity: 0;
+        transform: scale(0);
+        position: absolute;
+        transition: .0s;
+    }
+
+    /* Sirf Visited Places */
+    #check4:checked ~ .container .Photo-gallery .place {
+        opacity: 1;
+        transform: scale(1);
+        position: relative;
+        transition: .1s;
+    }
+    #check4:checked ~ .container .Photo-gallery .family,
+    #check4:checked ~ .container .Photo-gallery .child {
+        opacity: 0;
+        transform: scale(0);
+        position: absolute;
+        transition: .0s;
+    }
+     /* Lightbox style */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+        width: 50%;
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: #f7f5f5;
+      font-size: 40px;
+      font-weight: bold;
+      text-decoration: none;
+      background: none;
+    }
+    .lightbox .close:hover {
+      color: rgb(72, 119, 119);
+    }
+    /* :target trick se lightbox open hoga */
+    .lightbox:target {
+      display: flex;
+    }
+  
+   
